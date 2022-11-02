@@ -15,6 +15,13 @@ spec:
       containers:
       - name: reverseproxy
         image: docker.io/abu2/udagram-reverseproxy:v3
+        envFrom:
+            - secretRef:
+                name: env-secret
+            - secretRef:
+                name: aws-secret
+            - configMapRef:
+                name: env-configmap
         ports:
         - containerPort: 80
         resources:
